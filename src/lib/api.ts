@@ -6,6 +6,8 @@
  * with real API calls when backend is ready.
  */
 
+import { MOCK_PRODUCTS, getMockProductById, getMockProductsByCategory, searchMockProducts } from '@/data/mock-products';
+
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || '/api';
 
 // Types
@@ -59,50 +61,15 @@ export interface ProductFilters {
   pageSize?: number;
 }
 
-// Mock data for development
-const MOCK_PRODUCTS: Product[] = [
-  {
-    id: "1",
-    title: "Wireless Bluetooth Earbuds with Charging Case - Premium Sound Quality",
-    description: "Experience premium sound quality with these wireless Bluetooth earbuds.",
-    price: 29.99,
-    originalPrice: 59.99,
-    currency: "USD",
-    images: ["/placeholder-product.jpg"],
-    rating: 4.5,
-    reviewCount: 2847,
-    source: "amazon",
-    affiliateLink: "#",
-    category: "Electronics",
-    tags: ["audio", "wireless", "bluetooth"],
-    inStock: true,
-    features: ["Bluetooth 5.3", "ANC", "24h battery"],
-    specifications: { "Bluetooth": "5.3", "Battery": "24 hours" },
-    createdAt: "2026-04-19T00:00:00Z",
-    updatedAt: "2026-04-19T00:00:00Z",
-  },
-  // Add more mock products as needed
-];
+// Note: Mock products imported from @/data/mock-products.ts
+// Contains 12 products across Home & Kitchen, Electronics, Beauty, and Fashion categories
 
+// Note: Categories defined inline for mock data
 const MOCK_CATEGORIES: Category[] = [
-  {
-    id: "electronics",
-    name: "Electronics",
-    slug: "electronics",
-    description: "Gadgets, accessories, and tech essentials",
-    icon: "📱",
-    productCount: 156,
-    subcategories: ["Audio", "Phone Accessories", "Computer Accessories"],
-  },
-  {
-    id: "home-living",
-    name: "Home & Living",
-    slug: "home-living",
-    description: "Everything for a better home",
-    icon: "🏠",
-    productCount: 203,
-    subcategories: ["Kitchen", "Bedding", "Storage"],
-  },
+  { id: "home-kitchen", name: "Home & Kitchen", slug: "home-kitchen", description: "Kitchen gadgets, storage, and home decor", icon: "🏠", productCount: 5, subcategories: ["Storage", "Kitchen Tools", "Lighting", "Aromatherapy"] },
+  { id: "electronics", name: "Electronics", slug: "electronics", description: "Tech accessories and gadgets", icon: "📱", productCount: 3, subcategories: ["USB Hubs", "Chargers", "Laptop Accessories"] },
+  { id: "beauty", name: "Beauty", slug: "beauty", description: "Beauty tools and skincare devices", icon: "💄", productCount: 2, subcategories: ["Makeup Tools", "Skincare Devices"] },
+  { id: "fashion", name: "Fashion", slug: "fashion", description: "Fashion accessories and travel gear", icon: "👗", productCount: 2, subcategories: ["Eyewear", "Travel Accessories"] },
 ];
 
 /**
@@ -111,12 +78,56 @@ const MOCK_CATEGORIES: Category[] = [
 export async function fetchProducts(filters?: ProductFilters): Promise<ProductsResponse> {
   // In development, use mock data
   if (!API_BASE_URL || API_BASE_URL === '/api') {
+    let products = [...MOCK_PRODUCTS];
+    
+    // Apply filters
+    if (filters?.category) {
+      products = products.filter(p => p.category === filters.category);
+    }
+    if (filters?.source) {
+      products = products.filter(p => p.source === filters.source);
+    }
+    if (filters?.minPrice !== undefined) {
+      products = products.filter(p => p.price >= (filters.minPrice || 0));
+    }
+    if (filters?.maxPrice !== undefined) {
+      products = products.filter(p => p.price <= (filters.maxPrice || Infinity));
+    }
+    if (filters?.search) {
+      products = searchMockProducts(filters.search);
+    }
+    
+    // Apply sorting
+    if (filters?.sortBy) {
+      switch (filters.sortBy) {
+        case 'price-low':
+          products.sort((a, b) => a.price - b.price);
+          break;
+        case 'price-high':
+          products.sort((a, b) => b.price - a.price);
+          break;
+        case 'rating':
+          products.sort((a, b) => b.rating - a.rating);
+          break;
+        case 'newest':
+          products.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
+          break;
+      }
+    }
+    
+    // Apply pagination
+    const page = filters?.page || 1;
+    const pageSize = filters?.pageSize || 10;
+    const total = products.length;
+    const totalPages = Math.ceil(total / pageSize);
+    const paginatedProducts = products.slice((page - 1) * pageSize, page * pageSize);
+    
     return {
-      products: MOCK_PRODUCTS,
-      total: MOCK_PRODUCTS.length,
-      page: filters?.page || 1,
-      pageSize: filters?.pageSize || 10,
-      totalPages: 1,
+      products: paginatedProducts,
+      total,
+      page,
+      pageSize,
+      totalPages,
     };
   }
 
@@ -144,7 +155,7 @@ export async function fetchProducts(filters?: ProductFilters): Promise<ProductsR
  */
 export async function fetchProduct(id: string): Promise<Product> {
   if (!API_BASE_URL || API_BASE_URL === '/api') {
-    const product = MOCK_PRODUCTS.find(p => p.id === id);
+    const product = getMockProductById(id);
     if (!product) {
       throw new Error('Product not found');
     }
@@ -182,10 +193,7 @@ export async function fetchCategories(): Promise<Category[]> {
  */
 export async function searchProducts(query: string): Promise<Product[]> {
   if (!API_BASE_URL || API_BASE_URL === '/api') {
-    return MOCK_PRODUCTS.filter(p => 
-      p.title.toLowerCase().includes(query.toLowerCase()) ||
-      p.description.toLowerCase().includes(query.toLowerCase())
-    );
+    return searchMockProducts(query);
   }
 
   const response = await fetch(`${API_BASE_URL}/search?q=${encodeURIComponent(query)}`);
