@@ -1,0 +1,87 @@
+@import "tailwindcss";
+
+:root {
+  /* Brand Colors - ChinaSmartFinds */
+  --primary-red: #DC2626;
+  --primary-gold: #F59E0B;
+  --accent-blue: #2563EB;
+  --neutral-dark: #1F2937;
+  --neutral-light: #F9FAFB;
+  
+  /* Semantic Colors */
+  --background: #FFFFFF;
+  --foreground: #111827;
+  --card-bg: #FFFFFF;
+  --card-border: #E5E7EB;
+  --muted: #6B7280;
+  --success: #10B981;
+  --warning: #F59E0B;
+}
+
+@theme inline {
+  --color-primary-red: var(--primary-red);
+  --color-primary-gold: var(--primary-gold);
+  --color-accent-blue: var(--accent-blue);
+  --color-neutral-dark: var(--neutral-dark);
+  --color-neutral-light: var(--neutral-light);
+}
+
+body {
+  background: var(--neutral-light);
+  color: var(--foreground);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  line-height: 1.6;
+}
+
+/* Custom Utilities */
+@utility container {
+  margin-inline: auto;
+  padding-inline: 1.5rem;
+  @media (width >= 640px) {
+    max-width: 640px;
+  }
+  @media (width >= 768px) {
+    max-width: 768px;
+  }
+  @media (width >= 1024px) {
+    max-width: 1024px;
+  }
+  @media (width >= 1280px) {
+    max-width: 1280px;
+  }
+}
+
+/* Product Card Styles */
+.product-card {
+  @apply bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden transition-all duration-300 hover:shadow-lg hover:-translate-y-1;
+}
+
+.product-card-image {
+  @apply aspect-square w-full object-cover bg-gray-100;
+}
+
+/* Button Styles */
+.btn-primary {
+  @apply bg-primary-red text-white px-6 py-3 rounded-lg font-semibold transition-all duration-200 hover:bg-red-700 active:scale-95;
+}
+
+.btn-secondary {
+  @apply bg-primary-gold text-white px-6 py-3 rounded-lg font-semibold transition-all duration-200 hover:bg-amber-600 active:scale-95;
+}
+
+.btn-outline {
+  @apply border-2 border-primary-red text-primary-red px-6 py-3 rounded-lg font-semibold transition-all duration-200 hover:bg-primary-red hover:text-white;
+}
+
+/* Badge Styles */
+.badge-new {
+  @apply bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded;
+}
+
+.badge-hot {
+  @apply bg-red-100 text-red-800 text-xs font-medium px-2.5 py-0.5 rounded;
+}
+
+.badge-discount {
+  @apply bg-amber-100 text-amber-800 text-xs font-medium px-2.5 py-0.5 rounded;
+}
