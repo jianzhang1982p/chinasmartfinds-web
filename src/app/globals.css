@@ -1,36 +1,38 @@
 @import "tailwindcss";
 
 :root {
-  /* Brand Colors - ChinaSmartFinds */
-  --primary-red: #DC2626;
-  --primary-gold: #F59E0B;
-  --accent-blue: #2563EB;
-  --neutral-dark: #1F2937;
-  --neutral-light: #F9FAFB;
+  /* Brand Colors - ChinaSmartFinds (Design Spec v1.0) */
+  --color-primary: #FF6B35;
+  --color-secondary: #2E86AB;
+  --color-accent: #28A745;
+  --color-neutral: #F8F9FA;
+  --color-text: #1A1A1A;
+  --color-text-muted: #666666;
   
   /* Semantic Colors */
   --background: #FFFFFF;
-  --foreground: #111827;
+  --foreground: #1A1A1A;
   --card-bg: #FFFFFF;
   --card-border: #E5E7EB;
-  --muted: #6B7280;
-  --success: #10B981;
+  --muted: #666666;
+  --success: #28A745;
   --warning: #F59E0B;
 }
 
 @theme inline {
-  --color-primary-red: var(--primary-red);
-  --color-primary-gold: var(--primary-gold);
-  --color-accent-blue: var(--accent-blue);
-  --color-neutral-dark: var(--neutral-dark);
-  --color-neutral-light: var(--neutral-light);
+  --color-primary: var(--color-primary);
+  --color-secondary: var(--color-secondary);
+  --color-accent: var(--color-accent);
+  --color-neutral: var(--color-neutral);
+  --color-text: var(--color-text);
+  --color-text-muted: var(--color-text-muted);
 }
 
 body {
-  background: var(--neutral-light);
-  color: var(--foreground);
+  background: var(--color-neutral);
+  color: var(--color-text);
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  line-height: 1.6;
+  line-height: 1.625; /* leading-relaxed */
 }
 
 /* Custom Utilities */
@@ -60,17 +62,21 @@ body {
   @apply aspect-square w-full object-cover bg-gray-100;
 }
 
-/* Button Styles */
+/* Button Styles (Design Spec v1.0) */
 .btn-primary {
-  @apply bg-primary-red text-white px-6 py-3 rounded-lg font-semibold transition-all duration-200 hover:bg-red-700 active:scale-95;
+  @apply bg-primary text-white px-6 py-3 rounded-lg font-semibold transition-all duration-200 hover:opacity-90 active:scale-95 min-h-[44px];
 }
 
 .btn-secondary {
-  @apply bg-primary-gold text-white px-6 py-3 rounded-lg font-semibold transition-all duration-200 hover:bg-amber-600 active:scale-95;
+  @apply bg-secondary text-white px-6 py-3 rounded-lg font-semibold transition-all duration-200 hover:opacity-90 active:scale-95 min-h-[44px];
 }
 
 .btn-outline {
-  @apply border-2 border-primary-red text-primary-red px-6 py-3 rounded-lg font-semibold transition-all duration-200 hover:bg-primary-red hover:text-white;
+  @apply border-2 border-primary text-primary px-6 py-3 rounded-lg font-semibold transition-all duration-200 hover:bg-primary hover:text-white min-h-[44px];
+}
+
+.btn-accent {
+  @apply bg-accent text-white px-6 py-3 rounded-lg font-semibold transition-all duration-200 hover:opacity-90 active:scale-95 min-h-[44px];
 }
 
 /* Badge Styles */
