@@ -5,15 +5,13 @@ export default function Header() {
     <header className="bg-white shadow-sm sticky top-0 z-50">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
-          {/* Logo */}
-          <Link href="/" className="flex items-center space-x-2">
-            <div className="w-10 h-10 bg-primary-red rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-xl">中</span>
-            </div>
-            <div>
-              <h1 className="text-xl font-bold text-gray-900">ChinaSmartFinds</h1>
-              <p className="text-xs text-gray-500">中国好物精选</p>
-            </div>
+          {/* Logo - Scheme C (Combination Mark) */}
+          <Link href="/" className="flex items-center">
+            <img
+              src="/logo-final/logo-c-combination.svg"
+              alt="ChinaSmartFinds - Curated Chinese Goods"
+              className="h-8 w-auto"
+            />
           </Link>
 
           {/* Navigation */}

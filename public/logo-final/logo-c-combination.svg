@@ -1,0 +1,16 @@
+<svg width="240" height="60" viewBox="0 0 240 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Icon - Shopping bag with Chinese element -->
+  <rect x="8" y="12" width="36" height="36" rx="4" fill="#FF6B35"/>
+  <path d="M16 20V16C16 13.7909 17.7909 12 20 12H28C30.2091 12 32 13.7909 32 16V20" stroke="white" stroke-width="2" stroke-linecap="round"/>
+  <path d="M20 30L24 34L30 28" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  
+  <!-- Text - ChinaSmartFinds -->
+  <text x="56" y="38" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="20" font-weight="700" fill="#1A1A1A">
+    China<tspan fill="#FF6B35">Smart</tspan>Finds
+  </text>
+  
+  <!-- Tagline -->
+  <text x="56" y="50" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="8" fill="#666666" letter-spacing="0.5">
+    CURATED CHINESE GOODS
+  </text>
+</svg>
