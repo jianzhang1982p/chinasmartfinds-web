@@ -69,7 +69,7 @@ export default function HomePage() {
       <section className="bg-gradient-to-r from-primary-red to-red-700 text-white">
         <div className="container mx-auto px-4 py-16 md:py-24">
           <div className="max-w-3xl">
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">
+            <h1 className="text-3xl md:text-4xl font-bold mb-6">
               Discover the Best{" "}
               <span className="text-primary-gold">Chinese Products</span>
             </h1>
@@ -99,7 +99,7 @@ export default function HomePage() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
               </div>
-              <h3 className="text-lg font-semibold mb-2">Quality Verified</h3>
+              <h3 className="text-xl font-medium mb-2">Quality Verified</h3>
               <p className="text-gray-600">Every product is carefully selected based on reviews and ratings</p>
             </div>
             <div className="text-center">
@@ -108,7 +108,7 @@ export default function HomePage() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
               </div>
-              <h3 className="text-lg font-semibold mb-2">Best Deals</h3>
+              <h3 className="text-xl font-medium mb-2">Best Deals</h3>
               <p className="text-gray-600">We find the best prices across multiple platforms</p>
             </div>
             <div className="text-center">
@@ -117,7 +117,7 @@ export default function HomePage() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
                 </svg>
               </div>
-              <h3 className="text-lg font-semibold mb-2">Trusted Sources</h3>
+              <h3 className="text-xl font-medium mb-2">Trusted Sources</h3>
               <p className="text-gray-600">Only from reputable sellers on major platforms</p>
             </div>
           </div>
@@ -127,7 +127,7 @@ export default function HomePage() {
       {/* Categories */}
       <section className="py-16">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-12">Shop by Category</h2>
+          <h2 className="text-2xl font-semibold text-center mb-12">Shop by Category</h2>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
             {categories.map((category) => (
               <Link
@@ -148,7 +148,7 @@ export default function HomePage() {
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between mb-8">
-            <h2 className="text-3xl font-bold">Featured Products</h2>
+            <h2 className="text-2xl font-semibold">Featured Products</h2>
             <Link href="/products" className="text-primary-red font-medium hover:underline">
               View All →
             </Link>
@@ -164,7 +164,7 @@ export default function HomePage() {
       {/* CTA Section */}
       <section className="py-16 bg-neutral-light">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold mb-4">Never Miss a Great Deal</h2>
+          <h2 className="text-2xl font-semibold mb-4">Never Miss a Great Deal</h2>
           <p className="text-gray-600 mb-8 max-w-2xl mx-auto">
             Subscribe to our newsletter and get weekly updates on the best Chinese products, 
             exclusive deals, and shopping tips.
