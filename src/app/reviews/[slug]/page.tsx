@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import { getReviewBySlug, getAllReviews } from "@/data/reviews";
 
 interface PageProps {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }
 
 export function generateStaticParams() {
@@ -13,8 +13,9 @@ export function generateStaticParams() {
   }));
 }
 
-export function generateMetadata({ params }: PageProps) {
-  const review = getReviewBySlug(params.slug);
+export async function generateMetadata({ params }: PageProps) {
+  const { slug } = await params;
+  const review = getReviewBySlug(slug);
   if (!review) {
     return { title: "Review Not Found" };
   }
@@ -24,8 +25,9 @@ export function generateMetadata({ params }: PageProps) {
   };
 }
 
-export default function ReviewPage({ params }: PageProps) {
-  const review = getReviewBySlug(params.slug);
+export default async function ReviewPage({ params }: PageProps) {
+  const { slug } = await params;
+  const review = getReviewBySlug(slug);
   
   if (!review) {
     notFound();
