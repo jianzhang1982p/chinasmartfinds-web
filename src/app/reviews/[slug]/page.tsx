@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getReviewBySlug, getAllReviews } from "@/data/reviews";
+import PlaceholderImage from "@/components/PlaceholderImage";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -57,6 +58,18 @@ export default async function ReviewPage({ params }: PageProps) {
         <p className="text-xl text-gray-600 mb-8">
           {review.excerpt}
         </p>
+
+        {/* Product Image Placeholder */}
+        <div className="mb-8">
+          <PlaceholderImage
+            width={review.image?.width || 800}
+            height={review.image?.height || 600}
+            text={`Product Image: ${review.title}`}
+          />
+          <p className="text-center text-sm text-gray-400 mt-2">
+            📷 Image placeholder - Replace with actual product photo ({review.image?.width || 800} x {review.image?.height || 600}px)
+          </p>
+        </div>
 
         {/* Quick Stats */}
         <div className="flex flex-wrap items-center gap-6 p-6 bg-neutral rounded-xl">

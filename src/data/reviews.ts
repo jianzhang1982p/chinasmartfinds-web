@@ -14,6 +14,11 @@ export interface Review {
   pros: string[];
   cons: string[];
   publishedAt: string;
+  image?: {
+    width: number;
+    height: number;
+    alt: string;
+  };
 }
 
 export const REVIEWS: Review[] = [
@@ -42,7 +47,8 @@ export const REVIEWS: Review[] = [
     },
     pros: ["Genuine time-saver", "Versatile design", "Easy cleanup"],
     cons: ["Blade assembly requires hand washing"],
-    publishedAt: "2026-04-20"
+    publishedAt: "2026-04-20",
+    image: { width: 800, height: 600, alt: "Fullstar Vegetable Chopper" }
   },
   {
     slug: "electric-milk-frother-review",
@@ -66,7 +72,8 @@ export const REVIEWS: Review[] = [
     },
     pros: ["Creates rich foam quickly", "Affordable", "Durable"],
     cons: ["Batteries not included"],
-    publishedAt: "2026-04-20"
+    publishedAt: "2026-04-20",
+    image: { width: 800, height: 600, alt: "Product Image" }
   },
   {
     slug: "instant-read-thermometer-review",
@@ -90,7 +97,8 @@ export const REVIEWS: Review[] = [
     },
     pros: ["Fast and accurate", "Easy to read", "Waterproof"],
     cons: ["Probe could be longer"],
-    publishedAt: "2026-04-20"
+    publishedAt: "2026-04-20",
+    image: { width: 800, height: 600, alt: "Product Image" }
   },
   // Electronics (3 篇)
   {
@@ -115,7 +123,8 @@ export const REVIEWS: Review[] = [
     },
     pros: ["Compact design", "Fast data transfer", "Plug and play"],
     cons: ["Gets warm during heavy use"],
-    publishedAt: "2026-04-20"
+    publishedAt: "2026-04-20",
+    image: { width: 800, height: 600, alt: "Product Image" }
   },
   {
     slug: "wireless-earbuds-review",
@@ -139,7 +148,8 @@ export const REVIEWS: Review[] = [
     },
     pros: ["Great sound quality", "Comfortable fit", "Good battery life"],
     cons: ["Case is a bit bulky"],
-    publishedAt: "2026-04-20"
+    publishedAt: "2026-04-20",
+    image: { width: 800, height: 600, alt: "Product Image" }
   },
   // Beauty (3 篇)
   {
@@ -163,7 +173,8 @@ export const REVIEWS: Review[] = [
     },
     pros: ["Smooth results", "Affordable", "Easy to use"],
     cons: ["Blades need frequent replacement"],
-    publishedAt: "2026-04-20"
+    publishedAt: "2026-04-20",
+    image: { width: 800, height: 600, alt: "Product Image" }
   },
   {
     slug: "jade-roller-review",
@@ -186,7 +197,8 @@ export const REVIEWS: Review[] = [
     },
     pros: ["Relaxing massage", "Reduces puffiness", "Beautiful design"],
     cons: ["Results vary by person"],
-    publishedAt: "2026-04-20"
+    publishedAt: "2026-04-20",
+    image: { width: 800, height: 600, alt: "Product Image" }
   },
   {
     slug: "heatless-hair-curler-review",
@@ -209,7 +221,8 @@ export const REVIEWS: Review[] = [
     },
     pros: ["No heat damage", "Long-lasting curls", "Comfortable to sleep"],
     cons: ["Takes practice to master"],
-    publishedAt: "2026-04-20"
+    publishedAt: "2026-04-20",
+    image: { width: 800, height: 600, alt: "Product Image" }
   },
   // Fashion (2 篇)
   {
@@ -234,7 +247,8 @@ export const REVIEWS: Review[] = [
     },
     pros: ["Stylish design", "Good quality", "Affordable"],
     cons: ["Strap could be wider"],
-    publishedAt: "2026-04-20"
+    publishedAt: "2026-04-20",
+    image: { width: 800, height: 600, alt: "Product Image" }
   },
   {
     slug: "blue-light-glasses-review",
@@ -258,7 +272,8 @@ export const REVIEWS: Review[] = [
     },
     pros: ["Noticeable eye strain reduction", "Comfortable", "Stylish"],
     cons: ["Slight color tint"],
-    publishedAt: "2026-04-20"
+    publishedAt: "2026-04-20",
+    image: { width: 800, height: 600, alt: "Product Image" }
   },
   // Roundups (1 篇)
   {
@@ -279,7 +294,8 @@ export const REVIEWS: Review[] = [
     specifications: {},
     pros: ["Comprehensive testing", "Budget-friendly", "Practical picks"],
     cons: ["Some seasonal availability"],
-    publishedAt: "2026-04-20"
+    publishedAt: "2026-04-20",
+    image: { width: 800, height: 600, alt: "Product Image" }
   }
 ];
 
